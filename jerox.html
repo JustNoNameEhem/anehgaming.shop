@@ -1,77 +1,85 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download AG INJECTOR 6</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-        .glow-card {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .step-number {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        }
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .glow-card { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); border: 1px solid rgba(255, 255, 255, 0.05); }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-6" x-data="{ lang: 'en' }">
 
-    <div class="max-w-md w-full bg-slate-900 rounded-3xl p-8 glow-card">
+    <div class="max-w-md w-full bg-slate-900 rounded-[2.5rem] p-8 glow-card border border-slate-800 relative">
+        
+        <div class="absolute top-6 right-8 flex gap-2">
+            <button @click="lang = 'en'" :class="lang === 'en' ? 'text-blue-400 font-bold' : 'text-slate-500'" class="text-xs transition-all">EN</button>
+            <span class="text-slate-700 text-xs">|</span>
+            <button @click="lang = 'id'" :class="lang === 'id' ? 'text-blue-400 font-bold' : 'text-slate-500'" class="text-xs transition-all">ID</button>
+        </div>
+
         <div class="text-center mb-8">
-            <div class="text-5xl mb-4">🎮</div>
-            <h1 class="text-2xl font-black tracking-tight text-white mb-2">
+            <div class="relative inline-block mb-4">
+                <div class="absolute inset-0 bg-blue-500 blur-2xl opacity-20 rounded-full"></div>
+                <img src="https://avatars.githubusercontent.com/u/116832438?v=4" 
+                     alt="Logo" 
+                     class="relative w-20 h-20 rounded-full border-4 border-slate-800 shadow-2xl mx-auto">
+            </div>
+            <h1 class="text-2xl font-black tracking-tight text-white mb-2 uppercase">
                 AG INJECTOR <span class="text-blue-500">6</span>
             </h1>
-            <span class="bg-blue-600/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
-                Tahap Pengujian
-            </span>
-            <p class="text-slate-400 mt-4 text-sm">
-                Halo! Ikuti langkah di bawah ini untuk mencoba versi terbaru.
-            </p>
-        </div>
-
-        <div class="space-y-4">
-            <div class="flex items-center p-4 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-blue-500 transition-all group">
-                <div class="step-number w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg">1</div>
-                <div class="flex-grow">
-                    <p class="text-xs text-slate-500 uppercase font-bold">Langkah Pertama</p>
-                    <a href="https://groups.google.com/g/anehgaming" target="_blank" class="text-sm font-semibold group-hover:text-blue-400 transition-colors">Join Google Group</a>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-slate-600"></i>
-            </div>
-
-            <div class="flex items-center p-4 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all group">
-                <div class="step-number w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg">2</div>
-                <div class="flex-grow">
-                    <p class="text-xs text-slate-500 uppercase font-bold">Daftar Tester</p>
-                    <a href="https://play.google.com/apps/testing/com.aneh.gaming6" target="_blank" class="text-sm font-semibold group-hover:text-purple-400 transition-colors">Become a Tester</a>
-                </div>
-                <i class="fa-solid fa-user-check text-slate-600"></i>
-            </div>
-
-            <div class="flex items-center p-4 bg-slate-800/50 rounded-2xl border border-slate-700 hover:border-green-500 transition-all group">
-                <div class="step-number w-10 h-10 rounded-xl flex items-center justify-center font-bold mr-4 shrink-0 shadow-lg">3</div>
-                <div class="flex-grow">
-                    <p class="text-xs text-slate-500 uppercase font-bold">Selesai</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.aneh.gaming6" target="_blank" class="text-sm font-semibold group-hover:text-green-400 transition-colors">Download di Play Store</a>
-                </div>
-                <i class="fa-brands fa-google-play text-slate-600"></i>
+            <div class="inline-flex items-center gap-2 bg-blue-600/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.2em]">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                <span x-text="lang === 'en' ? 'Testing Phase' : 'Tahap Pengujian'"></span>
             </div>
         </div>
 
-        <div class="mt-8 p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex gap-3">
-            <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1"></i>
-            <div>
-                <p class="text-xs font-bold text-amber-500 uppercase mb-1">Penting!</p>
-                <p class="text-[11px] text-amber-200/80 leading-relaxed">
-                    Pastikan akun Gmail di <b>Chrome</b> & <b>Play Store</b> sama dengan akun saat join group agar link download bisa dibuka.
-                </p>
+        <div class="space-y-3">
+            <a href="https://groups.google.com/g/anehgaming" target="_blank" 
+               class="flex items-center p-4 bg-slate-800/40 hover:bg-slate-800 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold mr-4 shrink-0 text-white shadow-lg shadow-blue-900/20">1</div>
+                <div class="flex-grow text-left">
+                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'First Step' : 'Langkah Pertama'"></p>
+                    <p class="text-sm font-semibold text-slate-200 group-hover:text-blue-400">Join Google Group</p>
+                </div>
+                <i class="fa-solid fa-arrow-right-to-bracket text-slate-600 group-hover:text-blue-400"></i>
+            </a>
+
+            <a href="https://play.google.com/apps/testing/com.aneh.gaming6" target="_blank" 
+               class="flex items-center p-4 bg-slate-800/40 hover:bg-slate-800 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center font-bold mr-4 shrink-0 text-white shadow-lg shadow-purple-900/20">2</div>
+                <div class="flex-grow text-left">
+                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'Verification' : 'Verifikasi'"></p>
+                    <p class="text-sm font-semibold text-slate-200 group-hover:text-purple-400">Become a Tester</p>
+                </div>
+                <i class="fa-solid fa-user-check text-slate-600 group-hover:text-purple-400"></i>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.aneh.gaming6" target="_blank" 
+               class="flex items-center p-4 bg-slate-800/40 hover:bg-slate-800 rounded-2xl border border-slate-700/50 hover:border-green-500/50 transition-all duration-200 group">
+                <div class="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center font-bold mr-4 shrink-0 text-white shadow-lg shadow-green-900/20">3</div>
+                <div class="flex-grow text-left">
+                    <p class="text-[9px] text-slate-500 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'Final Step' : 'Langkah Terakhir'"></p>
+                    <p class="text-sm font-semibold text-slate-200 group-hover:text-green-400" x-text="lang === 'en' ? 'Download App' : 'Unduh Aplikasi'"></p>
+                </div>
+                <i class="fa-brands fa-google-play text-slate-600 group-hover:text-green-400"></i>
+            </a>
+        </div>
+
+        <div class="mt-8 p-4 bg-amber-950/20 border border-amber-500/20 rounded-2xl flex gap-3">
+            <i class="fa-solid fa-triangle-exclamation text-amber-500 mt-0.5"></i>
+            <div class="text-left text-[11px] leading-relaxed">
+                <p class="text-amber-500 font-bold uppercase mb-1" x-text="lang === 'en' ? 'Important Notice' : 'Peringatan Penting'"></p>
+                <p class="text-amber-200/70" x-show="lang === 'en'">Ensure the Gmail account in <b>Chrome</b> & <b>Play Store</b> matches the one used to join the group.</p>
+                <p class="text-amber-200/70" x-show="lang === 'id'" x-cloak>Pastikan akun Gmail di <b>Chrome</b> & <b>Play Store</b> sama dengan akun saat join group.</p>
             </div>
         </div>
 
