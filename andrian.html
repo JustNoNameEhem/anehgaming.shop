@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AG INJECTOR 7 | Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #020617; 
+            color: #f8fafc; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(222,47%,11%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(217,91%,60%,0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, hsla(222,47%,11%,1) 0, transparent 50%), 
+                radial-gradient(at 0% 100%, hsla(263,91%,60%,0.15) 0, transparent 50%);
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8" x-data="{ lang: 'en' }">
+
+    <div class="bg-mesh"></div>
+
+    <div class="max-w-md w-full glass rounded-[2.5rem] p-6 md:p-10 relative shadow-2xl">
+        
+        <div class="absolute top-8 right-10 flex items-center gap-3 bg-slate-950/50 px-3 py-1.5 rounded-full border border-white/5">
+            <button @click="lang = 'en'" :class="lang === 'en' ? 'text-blue-400' : 'text-slate-500'" class="text-[10px] font-bold transition-all uppercase tracking-tighter">EN</button>
+            <div class="w-[1px] h-3 bg-slate-800"></div>
+            <button @click="lang = 'id'" :class="lang === 'id' ? 'text-blue-400' : 'text-slate-500'" class="text-[10px] font-bold transition-all uppercase tracking-tighter">ID</button>
+        </div>
+
+        <div class="text-center mb-10">
+            <div class="relative inline-block mb-6">
+                <div class="absolute inset-0 bg-blue-500 blur-[40px] opacity-30 animate-pulse"></div>
+                <div class="relative p-1 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full">
+                    <img src="https://avatars.githubusercontent.com/u/116832438?v=4" 
+                         alt="Logo" 
+                         class="w-24 h-24 rounded-full border-4 border-slate-900 object-cover">
+                </div>
+            </div>
+            
+            <h1 class="text-3xl font-extrabold tracking-tighter text-white mb-2 italic">
+                AG INJECTOR <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">v7</span>
+            </h1>
+            
+            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                </span>
+                <span x-text="lang === 'en' ? 'Beta Access' : 'Akses Beta'"></span>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <a href="https://groups.google.com/g/anehgaming" target="_blank" 
+               class="step-card flex items-center p-4 bg-white/[0.03] hover:bg-white/[0.07] rounded-3xl border border-white/5 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-users text-white"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <p class="text-[10px] text-blue-400/80 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'Step 01' : 'Langkah 01'"></p>
+                    <p class="text-base font-bold text-slate-100 group-hover:text-white transition-colors">Join Google Group</p>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-700 group-hover:text-blue-400 mr-2 transition-colors"></i>
+            </a>
+
+            <a href="https://play.google.com/apps/testing/com.aneh.gaming7" target="_blank" 
+               class="step-card flex items-center p-4 bg-white/[0.03] hover:bg-white/[0.07] rounded-3xl border border-white/5 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-flask-vial text-white"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <p class="text-[10px] text-purple-400/80 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'Step 02' : 'Langkah 02'"></p>
+                    <p class="text-base font-bold text-slate-100 group-hover:text-white transition-colors">Register Tester</p>
+                </div>
+                <i class="fa-solid fa-chevron-right text-slate-700 group-hover:text-purple-400 mr-2 transition-colors"></i>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.aneh.gaming7" target="_blank" 
+               class="step-card flex items-center p-4 bg-white/[0.03] hover:bg-white/[0.07] rounded-3xl border border-white/5 transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-brands fa-google-play text-white"></i>
+                </div>
+                <div class="ml-4 flex-grow">
+                    <p class="text-[10px] text-emerald-400/80 uppercase font-bold tracking-widest" x-text="lang === 'en' ? 'Step 03' : 'Langkah 03'"></p>
+                    <p class="text-base font-bold text-slate-100 group-hover:text-white transition-colors" x-text="lang === 'en' ? 'Download App' : 'Unduh Aplikasi'"></p>
+                </div>
+                <i class="fa-solid fa-download text-slate-700 group-hover:text-emerald-400 mr-2 transition-colors animate-bounce"></i>
+            </a>
+        </div>
+
+        <div class="mt-8 p-5 bg-orange-500/5 border border-orange-500/20 rounded-[2rem] flex items-start gap-4">
+            <div class="bg-orange-500/20 p-2 rounded-lg">
+                <i class="fa-solid fa-circle-exclamation text-orange-500"></i>
+            </div>
+            <div class="text-left">
+                <p class="text-orange-400 text-xs font-black uppercase tracking-widest mb-1" x-text="lang === 'en' ? 'Attention' : 'Perhatian'"></p>
+                <p class="text-slate-400 text-[11px] leading-relaxed" x-show="lang === 'en'">Use the <span class="text-white font-bold">same Gmail account</span> across Chrome and Play Store to avoid errors.</p>
+                <p class="text-slate-400 text-[11px] leading-relaxed" x-show="lang === 'id'" x-cloak>Gunakan <span class="text-white font-bold">akun Gmail yang sama</span> di Chrome dan Play Store agar tidak error.</p>
+            </div>
+        </div>
+
+        <div class="mt-10">
+            <h3 class="text-center text-[10px] text-slate-500 uppercase font-black tracking-[0.3em] mb-4">Video Guide</h3>
+            <div class="rounded-3xl overflow-hidden border border-white/5 shadow-2xl relative group">
+                <div class="absolute inset-0 bg-blue-500/10 pointer-events-none group-hover:opacity-0 transition-opacity"></div>
+                <iframe 
+                    src="https://www.tiktok.com/player/v1/7626619575366454549"
+                    class="w-full h-[450px]"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center">
+            <div class="flex justify-center gap-6 mb-4 text-slate-500">
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="hover:text-red-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-pink-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p class="text-[10px] text-slate-600 font-bold tracking-widest uppercase">
+                &copy; 2026 ANEH GAMING PROJECT
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
