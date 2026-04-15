@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V9P1H52GEJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9P1H52GEJ"></script>
 
-  gtag('config', 'G-V9P1H52GEJ');
-</script>
-
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-V9P1H52GEJ');
+    </script>
     
     <meta name="monetag" content="ec6750818f3c7b8d96f7e2332580fd07">
-<script>(function(s){s.dataset.zone='10853895',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='10853895',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,10 +26,14 @@
     <style>
         [x-cloak] { display: none !important; }
         
-        :root { color-scheme: dark; }
+        :root { 
+            color-scheme: dark; 
+            --accent-red: #ff0033;
+            --accent-glow: rgba(255, 0, 51, 0.5);
+        }
 
         body { 
-            background-color: #020202; 
+            background-color: #050000; 
             color: #ffffff; 
             font-family: 'Rajdhani', sans-serif; 
             margin: 0;
@@ -41,8 +44,8 @@
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
         .bg-grid {
-            background-image: linear-gradient(to right, #111 1px, transparent 1px),
-                              linear-gradient(to bottom, #111 1px, transparent 1px);
+            background-image: linear-gradient(to right, #1a0505 1px, transparent 1px),
+                              linear-gradient(to bottom, #1a0505 1px, transparent 1px);
             background-size: 50px 50px;
         }
         
@@ -50,18 +53,21 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 2px;
-            background: #00d2ff;
-            box-shadow: 0 0 15px #00d2ff;
+            background: var(--accent-red);
+            box-shadow: 0 0 15px var(--accent-red);
             animation: scan-move 2s linear infinite;
         }
         @keyframes scan-move { 0% { top: 0% } 100% { top: 100% } }
 
-        .btn-glow:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .btn-glow-red:hover { 
+            box-shadow: 0 0 25px var(--accent-glow); 
+            background-color: #e6002e;
+        }
 
         .neon-hud-container {
             position: relative;
-            background: #050505 !important;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: #0a0000 !important;
+            border: 1px solid rgba(255, 0, 51, 0.2);
             box-shadow: 0 0 40px rgba(0, 0, 0, 1);
         }
 
@@ -69,7 +75,7 @@
             content: '';
             position: absolute;
             inset: -2px;
-            background: linear-gradient(90deg, #3b82f6, transparent, #3b82f6, transparent);
+            background: linear-gradient(90deg, var(--accent-red), transparent, var(--accent-red), transparent);
             background-size: 200% 100%;
             animation: border-flow 4s linear infinite;
             z-index: -1;
@@ -86,10 +92,10 @@
             position: absolute;
             width: 15px;
             height: 15px;
-            border-color: #3b82f6;
+            border-color: var(--accent-red);
             border-width: 2px;
             z-index: 30;
-            filter: drop-shadow(0 0 5px #3b82f6);
+            filter: drop-shadow(0 0 5px var(--accent-red));
         }
         .bracket-tl { top: -2px; left: -2px; border-right: 0; border-bottom: 0; border-radius: 4px 0 0 0; }
         .bracket-tr { top: -2px; right: -2px; border-left: 0; border-bottom: 0; border-radius: 0 4px 0 0; }
@@ -99,7 +105,7 @@
         .vhs-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
             z-index: 10;
@@ -107,11 +113,16 @@
 
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .red-glitch {
+            text-shadow: 2px 0 #ff0033, -2px 0 #00ffff;
+        }
     </style>
 </head>
 <body class="bg-grid" x-data="{ 
     scanning: false, 
     showTutorial: false,
+    showWarning: false,
     tutorialTab: 'video',
     tutorialLang: 'en',
     steps: {
@@ -133,13 +144,53 @@
         this.showTutorial = false;
         localStorage.setItem('ag_tutorial_seen', 'true');
     },
-    startSecureDownload() {
+    confirmDownload() {
+        this.showWarning = false;
         this.scanning = true;
         setTimeout(() => {
             window.location.href = 'https://gitlab.com/channelaneh8/test/-/raw/main/AG_INJECTOR_1.11.apk';
-        }, 1500);
+            this.scanning = false;
+        }, 2000);
     }
 }" x-init="checkFirstVisit()">
+
+    <!-- WARNING DIALOG (NEW) -->
+    <div 
+        x-show="showWarning" 
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
+        class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+        x-cloak
+    >
+        <div class="neon-hud-container w-full max-w-[340px] rounded-2xl p-6 relative text-center border-red-500/50">
+            <div class="hud-bracket bracket-tl"></div>
+            <div class="hud-bracket bracket-tr"></div>
+            <div class="hud-bracket bracket-bl"></div>
+            <div class="hud-bracket bracket-br"></div>
+
+            <div class="w-20 h-20 bg-red-600/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/30">
+                <i class="fa-solid fa-triangle-exclamation text-red-500 text-4xl animate-pulse"></i>
+            </div>
+            
+            <h2 class="font-orbitron text-xl font-bold text-red-500 mb-2 uppercase tracking-tighter">Required Action</h2>
+            <p class="font-rajdhani text-gray-300 text-sm mb-6 uppercase tracking-wider leading-tight">
+                Please <span class="text-white font-bold underline">UNINSTALL</span> the old <span class="text-red-400">AG Wallpaper</span> or any previous version before installing <span class="text-red-400">AG Injector 5</span> to avoid system conflict.
+            </p>
+
+            <div class="flex flex-col gap-3">
+                <button @click="confirmDownload()" class="w-full font-orbitron bg-red-600 hover:bg-red-700 py-3 rounded-lg font-bold text-white transition-all transform active:scale-95 text-xs tracking-widest">
+                    I HAVE UNINSTALLED IT, DOWNLOAD NOW
+                </button>
+                <button @click="showWarning = false" class="w-full font-orbitron bg-white/5 hover:bg-white/10 py-3 rounded-lg font-bold text-gray-400 text-xs tracking-widest">
+                    GO BACK
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Tutorial Modal -->
     <div 
@@ -153,7 +204,7 @@
         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/98 backdrop-blur-xl"
         x-cloak
     >
-        <div @click.away="closeTutorial()" class="neon-hud-container w-full max-w-[320px] rounded-2xl overflow-hidden relative">
+        <div @click.away="closeTutorial()" class="neon-hud-container w-full max-w-[320px] rounded-2xl overflow-hidden relative border-red-500/30">
             
             <div class="hud-bracket bracket-tl"></div>
             <div class="hud-bracket bracket-tr"></div>
@@ -161,10 +212,9 @@
             <div class="hud-bracket bracket-br"></div>
 
             <!-- Language & Tab Switcher -->
-            <div class="bg-zinc-950 p-2 flex flex-col gap-2 border-b border-blue-500/20">
-                <!-- Lang Select -->
+            <div class="bg-zinc-950 p-2 flex flex-col gap-2 border-b border-red-500/20">
                 <div class="flex justify-between items-center px-1">
-                    <span class="font-orbitron text-[8px] text-blue-500 uppercase tracking-widest">Select Region</span>
+                    <span class="font-orbitron text-[8px] text-red-500 uppercase tracking-widest">System Language</span>
                     <button @click="closeTutorial()" class="text-gray-600 hover:text-red-500 transition-all">
                         <i class="fa-solid fa-xmark text-sm"></i>
                     </button>
@@ -173,7 +223,7 @@
                     <template x-for="l in ['en', 'id', 'ms', 'ph', 'my']">
                         <button 
                             @click="tutorialLang = l"
-                            :class="tutorialLang === l ? 'bg-blue-600 text-white border-blue-400' : 'bg-white/5 text-gray-500 border-white/10'"
+                            :class="tutorialLang === l ? 'bg-red-600 text-white border-red-400' : 'bg-white/5 text-gray-500 border-white/10'"
                             class="text-[9px] px-2 py-1 rounded border font-orbitron uppercase transition-all flex-1"
                             x-text="l">
                         </button>
@@ -181,17 +231,17 @@
                 </div>
             </div>
 
-            <!-- Header Toggle (Video vs Text) -->
-            <div class="flex border-b border-blue-500/10">
+            <!-- Header Toggle -->
+            <div class="flex border-b border-red-500/10">
                 <button 
                     @click="tutorialTab = 'video'" 
-                    :class="tutorialTab === 'video' ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-400/5' : 'text-gray-600'"
+                    :class="tutorialTab === 'video' ? 'text-red-400 border-b-2 border-red-400 bg-red-400/5' : 'text-gray-600'"
                     class="flex-1 py-3 text-[10px] font-orbitron uppercase tracking-widest transition-all">
                     <i class="fa-solid fa-play mr-1 text-[8px]"></i> Video
                 </button>
                 <button 
                     @click="tutorialTab = 'text'" 
-                    :class="tutorialTab === 'text' ? 'text-blue-400 border-b-2 border-blue-400 bg-blue-400/5' : 'text-gray-600'"
+                    :class="tutorialTab === 'text' ? 'text-red-400 border-b-2 border-red-400 bg-red-400/5' : 'text-gray-600'"
                     class="flex-1 py-3 text-[10px] font-orbitron uppercase tracking-widest transition-all">
                     <i class="fa-solid fa-file-lines mr-1 text-[8px]"></i> Steps
                 </button>
@@ -217,7 +267,7 @@
                     <div class="space-y-4">
                         <template x-for="(step, index) in steps[tutorialLang]">
                             <div class="flex gap-3">
-                                <div class="w-5 h-5 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center font-orbitron text-[10px] font-bold text-white shadow-lg shadow-blue-500/30" x-text="index + 1"></div>
+                                <div class="w-5 h-5 rounded-full bg-red-600 flex-shrink-0 flex items-center justify-center font-orbitron text-[10px] font-bold text-white shadow-lg shadow-red-500/30" x-text="index + 1"></div>
                                 <p class="text-[11px] text-gray-300 leading-tight font-rajdhani uppercase tracking-wider" x-text="step"></p>
                             </div>
                         </template>
@@ -226,114 +276,120 @@
             </div>
 
             <!-- Footer -->
-            <div class="p-4 bg-zinc-950 border-t border-blue-500/10">
-                <button @click="closeTutorial()" class="w-full font-orbitron bg-blue-600/10 border border-blue-500/40 hover:bg-blue-600 py-3 rounded-lg font-bold text-blue-400 hover:text-white transition-all transform active:scale-95 text-[10px] tracking-[0.2em] flex items-center justify-center gap-2">
-                    CONFIRM & START <i class="fa-solid fa-chevron-right text-[8px]"></i>
+            <div class="p-4 bg-zinc-950 border-t border-red-500/10">
+                <button @click="closeTutorial()" class="w-full font-orbitron bg-red-600/10 border border-red-500/40 hover:bg-red-600 py-3 rounded-lg font-bold text-red-400 hover:text-white transition-all transform active:scale-95 text-[10px] tracking-[0.2em] flex items-center justify-center gap-2">
+                    CONFIRM & ACCESS <i class="fa-solid fa-chevron-right text-[8px]"></i>
                 </button>
             </div>
         </div>
     </div>
 
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div class="font-orbitron text-xl font-bold text-blue-500">
-            <i class="fa-solid fa-bolt mr-2"></i>AG INJECTOR
+        <div class="font-orbitron text-xl font-bold text-red-500 tracking-tighter">
+            <i class="fa-solid fa-bolt-lightning mr-2 animate-pulse"></i>AG INJECTOR
         </div>
         <div class="flex gap-4">
-            <a href="https://t.me/anehgaming" class="bg-white/5 p-2 rounded-lg hover:text-blue-400 transition">
+            <a href="https://t.me/anehgaming" class="bg-red-950/30 p-2 rounded-lg text-red-500 hover:text-red-400 border border-red-900/50 transition">
                 <i class="fa-brands fa-telegram text-xl"></i>
             </a>
-            <a href="https://chat.whatsapp.com/H45VgZbqvce7vbhXCgGGQK?mode=gi_t" class="bg-white/5 p-2 rounded-lg hover:text-green-400 transition">
+            <a href="https://chat.whatsapp.com/H45VgZbqvce7vbhXCgGGQK?mode=gi_t" class="bg-red-950/30 p-2 rounded-lg text-red-500 hover:text-red-400 border border-red-900/50 transition">
                 <i class="fa-brands fa-whatsapp text-xl"></i>
             </a>
         </div>
     </nav>
 
-    <main class="py-16 flex flex-col items-center px-4">
+    <main class="py-12 flex flex-col items-center px-4">
         
-        <h1 class="font-orbitron text-5xl md:text-8xl font-black text-center mb-4 tracking-tighter uppercase italic text-white text-center">
-            ANEH GAMING <span class="text-blue-500">TOOLS</span>
+        <h1 class="font-orbitron text-5xl md:text-8xl font-black text-center mb-4 tracking-tighter uppercase italic text-white red-glitch">
+            ANEH GAMING <span class="text-red-600">TOOLS</span>
         </h1>
-        <p class="text-gray-500 font-orbitron text-xs tracking-[0.5em] mb-12">NEXT-GEN SKIN INJECTION</p>
+        <p class="text-red-900 font-orbitron text-xs tracking-[0.5em] mb-12 font-bold">PREMIUM SKIN INJECTION V5</p>
 
-        <div class="w-full max-w-md bg-zinc-900/80 border border-white/10 rounded-3xl p-1 backdrop-blur-md overflow-hidden">
-            <div class="bg-black/50 p-8 rounded-[22px] relative overflow-hidden">
+        <div class="w-full max-w-md bg-zinc-900/40 border border-red-900/20 rounded-3xl p-1 backdrop-blur-md overflow-hidden shadow-2xl shadow-red-900/10">
+            <div class="bg-black/80 p-8 rounded-[22px] relative overflow-hidden">
                 
                 <div x-show="!scanning" class="text-center">
                     <button 
-                        @click="startSecureDownload()"
-                        class="w-full font-orbitron bg-blue-600 py-5 rounded-xl text-xl font-bold btn-glow transition-all transform active:scale-95 flex items-center justify-center gap-3">
-                        <i class="fa-solid fa-circle-down"></i> DOWNLOAD APK
+                        @click="showWarning = true"
+                        class="w-full font-orbitron bg-red-600 py-5 rounded-xl text-xl font-bold btn-glow-red transition-all transform active:scale-95 flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-download"></i> DOWNLOAD APK
                     </button>
                     
                     <button 
                         @click="showTutorial = true"
-                        class="mt-6 text-[10px] font-orbitron text-gray-500 hover:text-blue-400 tracking-widest transition-all">
-                        <i class="fa-solid fa-play mr-1 text-[8px]"></i> OPEN TUTORIAL
+                        class="mt-6 text-[10px] font-orbitron text-gray-500 hover:text-red-500 tracking-widest transition-all">
+                        <i class="fa-solid fa-video mr-1 text-[8px]"></i> VIEW INSTALLATION GUIDE
                     </button>
 
-                    <!-- Stylized Important Note -->
-                    <div class="mt-6 p-4 bg-white/5 border border-white/5 rounded-2xl flex items-start gap-3 text-left">
-                        <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                            <i class="fa-solid fa-eraser text-blue-500 text-xs animate-pulse"></i>
+                    <!-- Stylized Note -->
+                    <div class="mt-6 p-4 bg-red-950/10 border border-red-900/20 rounded-2xl flex items-start gap-3 text-left">
+                        <div class="w-8 h-8 rounded-lg bg-red-600/10 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-broom text-red-500 text-xs animate-bounce"></i>
                         </div>
                         <p class="text-[10px] font-orbitron text-gray-400 uppercase tracking-widest leading-relaxed">
-                            System Check: <span class="text-blue-400">Uninstall AG Wallpaper</span> if detected on device before proceeding.
+                            System Tip: <span class="text-red-500 font-bold">Clear cache</span> and <span class="text-red-500 font-bold">Uninstall</span> old apps to ensure script stability.
                         </p>
                     </div>
 
                     <p class="text-gray-600 text-[10px] mt-4 font-orbitron uppercase tracking-widest">
-                        Status: <span class="text-green-500">Working 2026</span>
+                        Server Status: <span class="text-green-500">Online & Optimized</span>
                     </p>
                 </div>
 
-                <div x-show="scanning" x-cloak class="py-6 text-center scanner-line relative">
-                    <i class="fa-solid fa-shield-halved text-blue-500 text-5xl mb-4 animate-pulse"></i>
-                    <h3 class="font-orbitron text-blue-400 uppercase tracking-widest">Preparing Your Download...</h3>
-                    <p class="text-xs text-gray-500 mt-2">Connecting to secure relay...</p>
+                <div x-show="scanning" x-cloak class="py-12 text-center scanner-line relative">
+                    <div class="relative inline-block mb-6">
+                        <i class="fa-solid fa-skull-crossbones text-red-600 text-6xl animate-pulse"></i>
+                        <div class="absolute inset-0 border-2 border-red-600 rounded-full animate-ping opacity-25"></div>
+                    </div>
+                    <h3 class="font-orbitron text-red-500 uppercase tracking-widest font-bold">Bypassing Security...</h3>
+                    <p class="text-xs text-gray-600 mt-2 font-orbitron">ENCRYPTING DATA TUNNEL</p>
                 </div>
             </div>
         </div>
 
+        <!-- Community Section -->
         <section class="mt-20 w-full max-w-4xl grid md:grid-cols-2 gap-6 px-4">
-            <a href="https://chat.whatsapp.com/H45VgZbqvce7vbhXCgGGQK?mode=gi_t" target="_blank" class="group bg-green-600/10 border border-green-500/20 p-8 rounded-2xl hover:bg-green-600/20 transition-all transform hover:-translate-y-2">
+            <a href="https://chat.whatsapp.com/H45VgZbqvce7vbhXCgGGQK?mode=gi_t" target="_blank" class="group bg-red-950/10 border border-red-900/20 p-8 rounded-2xl hover:bg-red-900/20 transition-all transform hover:-translate-y-2">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/50">
+                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-600/50">
                         <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
                     </div>
-                    <h3 class="font-orbitron text-xl font-bold">WHATSAPP GROUP</h3>
+                    <h3 class="font-orbitron text-xl font-bold text-red-500">WHATSAPP</h3>
                 </div>
-                <p class="text-gray-400 text-sm">Get direct support and chat with other MLBB players in our active community.</p>
-                <div class="mt-6 text-green-400 font-bold text-sm uppercase flex items-center gap-2">
-                    Join Squad <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
+                <p class="text-gray-400 text-sm">Join our private circle for daily skin drops and direct developer support.</p>
+                <div class="mt-6 text-red-500 font-bold text-sm uppercase flex items-center gap-2">
+                    Enter Group <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
                 </div>
             </a>
 
-            <a href="https://t.me/anehgaming" target="_blank" class="group bg-blue-600/10 border border-blue-500/20 p-8 rounded-2xl hover:bg-blue-600/20 transition-all transform hover:-translate-y-2">
+            <a href="https://t.me/anehgaming" target="_blank" class="group bg-zinc-900/40 border border-red-900/20 p-8 rounded-2xl hover:bg-red-900/20 transition-all transform hover:-translate-y-2">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/50">
+                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-600/50">
                         <i class="fa-brands fa-telegram text-2xl text-white"></i>
                     </div>
-                    <h3 class="font-orbitron text-xl font-bold">TELEGRAM CHANNEL</h3>
+                    <h3 class="font-orbitron text-xl font-bold text-red-500">TELEGRAM</h3>
                 </div>
-                <p class="text-gray-400 text-sm">Join 50k+ members for instant updates on new skins and anti-ban scripts.</p>
-                <div class="mt-6 text-blue-400 font-bold text-sm uppercase flex items-center gap-2">
-                    Join Now <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
+                <p class="text-gray-400 text-sm">Over 50,000 members already using the latest scripts. Join the elite.</p>
+                <div class="mt-6 text-red-500 font-bold text-sm uppercase flex items-center gap-2">
+                    Join Channel <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition"></i>
                 </div>
             </a>
         </section>
 
+        <!-- Change Log -->
         <div class="mt-20 w-full max-w-2xl text-center px-4">
-            <h4 class="font-orbitron text-gray-500 mb-6 tracking-[0.3em] uppercase text-xs italic underline decoration-blue-500 underline-offset-8">Latest Updates v1.0</h4>
-            <div class="space-y-2 text-left bg-white/5 p-6 rounded-xl border border-white/5">
-                <p class="text-gray-400 text-sm"><span class="text-blue-500 mr-2">●</span> Fixed skin detection on <strong>March 2026</strong> MLBB Patch.</p>
-                <p class="text-gray-400 text-sm"><span class="text-blue-500 mr-2">●</span> Optimized loading speed for low-end devices.</p>
+            <h4 class="font-orbitron text-red-900 mb-6 tracking-[0.3em] uppercase text-xs italic underline decoration-red-600 underline-offset-8">VERSION 5.0 CORE UPDATES</h4>
+            <div class="space-y-3 text-left bg-black/40 p-6 rounded-xl border border-red-900/20">
+                <p class="text-gray-400 text-sm flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span> Anti-Ban bypass for <strong>Season 32</strong> Patch.</p>
+                <p class="text-gray-400 text-sm flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span> New <strong>Collector & Zenith</strong> skins added.</p>
+                <p class="text-gray-400 text-sm flex items-center"><span class="w-2 h-2 bg-red-600 rounded-full mr-3"></span> High-Frame Rate optimization for Android 14+.</p>
             </div>
         </div>
 
     </main>
 
-    <footer class="py-12 text-center text-gray-600 text-[10px] font-orbitron tracking-widest uppercase">
-        &copy; 2026 ANEH GAMING | MODERATION & SKINS
+    <footer class="py-12 text-center text-red-900 text-[10px] font-orbitron tracking-widest uppercase">
+        &copy; 2026 ANEH GAMING | THE ONLY LEGIT SOURCE FOR SKINS
     </footer>
 </body>
 </html>
